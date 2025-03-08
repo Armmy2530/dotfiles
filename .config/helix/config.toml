@@ -1,0 +1,7 @@
+theme = "tokyonight_armmy"
+[keys.normal]
+C-s = "increment"
+# C-s = ":w"
+
+[editor]
+line-number = "relative"
