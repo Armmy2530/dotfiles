@@ -1,0 +1,89 @@
+# Python
+[[language]]
+auto-format = true
+language-servers = ["pylsp"]
+name = "python"
+scope = "source.python"
+
+[language-server.pylsp.config.plugins]
+autopep8 = { enabled = false }
+black = { enabled = true }
+flake8 = { enabled = true }
+mccabe = { enabled = false }
+mypy = { enabled = true, live_mode = true, strict = true }
+pycodestyle = { enabled = false }
+pydocstyle = { enabled = false }
+pyflakes = { enabled = false }
+pylint = { enabled = false }
+pyls_isort = { enabled = true }
+rope_autoimport = { enabled = true }
+yapf = { enabled = false }
+
+# XML for ROS2
+[[language]]
+name = "xml"
+file-types = [
+  "xml",
+  "mobileconfig",
+  "plist",
+  "xib",
+  "storyboard",
+  "svg",
+  "xsd",
+  "gml",
+  "xaml",
+  "gir",
+  "rss",
+  "atom",
+  "opml",
+  "policy",
+  "ascx",
+  "axml",
+  "axaml",
+  "bpmn",
+  "cpt",
+  "csl",
+  "csproj.user",
+  "dita",
+  "ditamap",
+  "dtml",
+  "fxml",
+  "iml",
+  "isml",
+  "jmx",
+  "launch",
+  "menu",
+  "mxml",
+  "nuspec",
+  "osc",
+  "pubxml.user",
+  "osm",
+  "pt",
+  "publishsettings",
+  "pubxml",
+  "rbxlx",
+  "rbxmx",
+  "rng",
+  "shproj",
+  "tld",
+  "tmx",
+  "vbproj.user",
+  "vcxproj",
+  "vcxproj.filters",
+  "wsdl",
+  "wxi",
+  "wxs",
+  "xbl",
+  "xlf",
+  "xliff",
+  "xpdl",
+  "xul",
+  "xoml",
+  "musicxml",
+  "glif",
+  "ui",
+  "sublime-snippet",
+  "xsl",
+  "urdf",
+  "xacro"
+]
