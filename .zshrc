@@ -103,22 +103,35 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
+
 # Starship theme launch
 eval "$(starship init zsh)"
 export STARSHIP_CONFIG=~/.config/starship/starship.toml
-
 #Key shortcut
 alias sz="source ~/.zshrc"
 alias hx=helix
 alias zshconfig="helix ~/.zshrc"
 alias hyprconfig="helix ~/.config/hypr/hyprland.conf"
-alias la='eza --icons -la'
-alias l='eza --icons -l'
-alias ls='eza --icons -l'
+alias la='eza -la'
+alias l='eza -l'
+alias ls='eza -l'
 alias c='clear'
+alias ssh="TERM=xterm-256color ssh"
 # alias sp='source ./install/setup.zsh'
 # alias sr='source /opt/ros/humble/setup.zsh'
 # alias spz='source ./install/setup.zsh && source ~/.zshrc'
 # alias cb='colcon build --symlink-install'
 alias lf='file *'
 # alias superslicer='/home/armmy2530/Desktop/SuperSlicer1/superslicer'
+
+#set sudo editor
+export SUDO_EDITOR=$(which helix) 
+
+# bun completions
+[ -s "/home/armmy2530/.bun/_bun" ] && source "/home/armmy2530/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

@@ -1,0 +1,7 @@
+
+//@theme "/home/armmy2530/.local/share/rofi/themes/squared-everforest.rasi"
+
+@theme "/home/armmy2530/.local/share/rofi/themes/squared-nord.rasi"
+configuration {
+	show-icons: true;
+}
