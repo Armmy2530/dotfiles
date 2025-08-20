@@ -87,3 +87,10 @@ file-types = [
   "urdf",
   "xacro"
 ]
+
+auto-format = true
+formatter = { command = "xmllint", args = ["--format", "-"] }
+language-servers = [ "xml" ]
+
+[language-server.xml]
+command = "lemminx-linux"
