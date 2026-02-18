@@ -8,7 +8,8 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+# ZSH_THEME="robbyrussell"
+ZSH_THEME="my-robby"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -103,31 +104,31 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
 
-# Starship theme launch
-eval "$(starship init zsh)"
-export STARSHIP_CONFIG=~/.config/starship/starship.toml
+
 #Key shortcut
+alias apt="sudo nala"
 alias sz="source ~/.zshrc"
-alias hx=helix
-alias zshconfig="helix ~/.zshrc"
-alias hyprconfig="helix ~/.config/hypr/hyprland.conf"
+alias zshconfig="hx ~/.zshrc"
+alias hyprconfig="hx ~/.config/hypr/hyprland.conf"
 alias la='eza -la'
 alias l='eza -l'
 alias ls='eza -l'
 alias c='clear'
 alias ssh="TERM=xterm-256color ssh"
-# alias sp='source ./install/setup.zsh'
-# alias sr='source /opt/ros/humble/setup.zsh'
-# alias spz='source ./install/setup.zsh && source ~/.zshrc'
-# alias cb='colcon build --symlink-install'
+alias sp='source ./install/setup.zsh'
+alias sr='source /opt/ros/$ROS_DISTRO/setup.zsh'
+alias spz='source ./install/setup.zsh && source ~/.zshrc'
+alias cb='colcon build --symlink-install'
 alias lf='file *'
 # alias superslicer='/home/armmy2530/Desktop/SuperSlicer1/superslicer'
 
 #set sudo editor
-export SUDO_EDITOR=$(which helix) 
+export SUDO_EDITOR=$(which hx) 
 
 # bun completions
 [ -s "/home/armmy2530/.bun/_bun" ] && source "/home/armmy2530/.bun/_bun"
@@ -135,3 +136,46 @@ export SUDO_EDITOR=$(which helix)
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# Export env
+export ROS_DISTRO=jazzy
+export ROS_DOMAIN_ID=23
+source /opt/ros/$ROS_DISTRO/setup.zsh
+
+# pnpm
+export PNPM_HOME="/home/armmy2530/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+. "$HOME/.local/bin/env"
+
+export PATH=$PATH:/usr/local/go/bin
+
+# opencode
+export PATH=/home/armmy2530/.opencode/bin:$PATH
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/armmy2530/programs/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/armmy2530/programs/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/armmy2530/programs/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/armmy2530/programs/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+export RMW_IMPLEMENTATION=rmw_zenoh_cpp
+
+# PROMPT='[%n] '$PROMPT
