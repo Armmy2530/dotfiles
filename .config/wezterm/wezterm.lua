@@ -6,13 +6,37 @@ local function file_exists(path)
     if f~=nil then io.close(f) return true else return false end
 end
 
+local opa_def  = 0.9
+local opa_step = 0.1
+wezterm.on("inc-opacity", function(window, pane)
+  opa_def=opa_def+opa_step
+if opa_def > 1.0 then
+  opa_def = 1.0
+end
+  local overrides = window:get_config_overrides() or {}
+        overrides.window_background_opacity = opa_def
+    window:set_config_overrides(overrides)
+end)
+
+wezterm.on("dec-opacity", function(window, pane)
+  opa_def=opa_def-opa_step
+if opa_def < 0.0 then
+  opa_def = 0.0
+end
+  local overrides = window:get_config_overrides() or {}
+        overrides.window_background_opacity = opa_def
+    window:set_config_overrides(overrides)
+end)
+
 local config = {
+    -- enable_wayland = true,
+    -- front_end = "Software",
     -- debug_key_events = true,
     audible_bell = "Disabled",
     -- default_prog = { "C:/Program Files/PowerShell/7/pwsh.exe", "-NoLogo"},
     check_for_updates = true,
     -- color_scheme = "Builtin Solarized Dark",
-    window_background_opacity = 0.55,
+    -- window_background_opacity = 0.55,
     inactive_pane_hsb = {
         hue = 1.0,
         saturation = 1.0,
@@ -55,6 +79,10 @@ local config = {
         { key = "+", mods="SHIFT|CTRL",     action="IncreaseFontSize" },
         { key = "-", mods="SHIFT|CTRL",     action="DecreaseFontSize" },
         { key = "0", mods="SHIFT|CTRL",     action="ResetFontSize" },
+
+        -- Backgroud opacity keybinds
+        { key = "[", mods = "CTRL", action = wezterm.action.EmitEvent("dec-opacity"),},
+        { key = "]", mods = "CTRL", action = wezterm.action.EmitEvent("inc-opacity"),},
     },
     set_environment_variables = {},
 }
