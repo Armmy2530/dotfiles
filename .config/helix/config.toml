@@ -3,6 +3,7 @@ theme = "tokyonight_armmy"
 C-s = "increment"
 C-j = ["extend_to_line_bounds", "delete_selection", "paste_after"]
 C-k = ["extend_to_line_bounds", "delete_selection", "move_line_up", "paste_before"]
+C-t = ":toggle file-picker.git-ignore"
 
 [editor.file-picker]
 hidden = false
